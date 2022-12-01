@@ -1,0 +1,8 @@
+name: "Go WakaTime Readme"
+description: "Go GitHub Action that adds Coding time statistics to your README"
+
+runs:
+  using: composite
+  steps:
+    - run: go run main.go
+      shell: bash
