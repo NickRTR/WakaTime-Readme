@@ -31,7 +31,23 @@ func addGraph(client *github.Client, graph [5]string) {
 		log.Panicln(err)
 	}
 
-	fmt.Println(readme)
+	editedReadme := readme + "\n"
 
+	for i := 0; i < 5; i++ {
+		editedReadme += graph[i]
+	}
+
+	fmt.Println(editedReadme)
+
+	b := []byte(editedReadme)
+	message := "Add WakaTime Stats"
+	sha := ""
+
+	updatedFile := github.RepositoryContentFileOptions{
+		Message: &message,
+		Content: b,
+		SHA:     &sha,
+	}
+	fmt.Println(client.Repositories.UpdateFile(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", &updatedFile))
 	//client.Git.CreateCommit(context.Background(), nil, "WakaTime-Readme", commit)
 }
