@@ -44,15 +44,18 @@ func allTime(token string) string {
 	return data.Data.Text
 }
 
-func createGraph(langs languages) {
+func createGraph(langs languages) [5]string {
 	empty := "⬜"
 	done := "🟩"
+
+	var graph [5]string
 
 	for i := 0; i < 5; i++ {
 		l := langs[i]
 		percent := math.Round(l.Percent)
-		fmt.Printf("%-20s %15s %s %5.2f %%\n", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
+		graph[i] = fmt.Sprintf("%-20s %15s %s %5.2f %%\n", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
 	}
+	return graph
 }
 
 func main() {
@@ -63,5 +66,9 @@ func main() {
 	fmt.Println(strings.Repeat("-", 95))
 
 	languages := last7Days(token)
-	createGraph(languages)
+	graph := createGraph(languages)
+
+	var GH_TOKEN string = os.Getenv("GH_TOKEN")
+	client := authenticate(GH_TOKEN)
+	addGraph(client, graph)
 }
