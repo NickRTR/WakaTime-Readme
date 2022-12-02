@@ -60,7 +60,7 @@ func main() {
 
 	fmt.Println("All Time duration: " + allTime(token))
 
-	fmt.Println("-------------------------------------------------")
+	fmt.Println(strings.Repeat("-", 95))
 
 	languages := last7Days(token)
 	createGraph(languages)
