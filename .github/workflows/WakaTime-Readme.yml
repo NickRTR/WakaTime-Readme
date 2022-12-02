@@ -1,11 +1,7 @@
 name: Go
 
 on:
-  workflow_dispatch:
-    push:
-      branches: [ "main", "issue1" ]
-    pull_request:
-      branches: [ "main" ]
+  workflow_dispatch
     
 env:
   Test: "Hello World!"
