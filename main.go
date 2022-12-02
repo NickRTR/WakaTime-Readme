@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 func request(url string) string {
@@ -42,11 +43,15 @@ func allTime(token string) string {
 }
 
 func main() {
-	var token string = ""
+	//var token string = ""
 
-	log.Println("All Time duration: " + allTime(token))
-	languages := last7Days(token)
-	for _, l := range languages {
-		fmt.Println(l.Name)
-	}
+	//log.Println("All Time duration: " + allTime(token))
+	//languages := last7Days(token)
+	//for _, l := range languages {
+	//	fmt.Println(l.Name)
+	//}
+
+	// Env Test:
+
+	fmt.Println(os.Environ())
 }
