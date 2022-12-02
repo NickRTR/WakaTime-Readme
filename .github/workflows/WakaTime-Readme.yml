@@ -3,7 +3,7 @@ name: Go
 on: [workflow_dispatch]
 
 env:
-  Test: "Hello World!"
+  WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
 
 jobs:
 

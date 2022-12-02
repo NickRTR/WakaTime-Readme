@@ -43,15 +43,11 @@ func allTime(token string) string {
 }
 
 func main() {
-	//var token string = ""
+	var token string = os.Getenv("WAKATIME_API_KEY")
 
-	//log.Println("All Time duration: " + allTime(token))
-	//languages := last7Days(token)
-	//for _, l := range languages {
-	//	fmt.Println(l.Name)
-	//}
-
-	// Env Test:
-
-	fmt.Println(os.Environ())
+	log.Println("All Time duration: " + allTime(token))
+	languages := last7Days(token)
+	for _, l := range languages {
+		fmt.Println(l.Name)
+	}
 }
