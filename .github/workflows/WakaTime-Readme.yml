@@ -1,20 +1,24 @@
 name: Go
 
-on: [workflow_dispatch]
-    
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
 env:
-  Test: "Hello World!"
+  WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
-        
-    - name: Go WakaTime Readme
-      uses: NickRTR/WakaTime-Readme@v0.01
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Go WakaTime Readme
+        uses: NickRTR/WakaTime-Readme@v0.1.0
