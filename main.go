@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func request(url string) string {
@@ -42,12 +44,24 @@ func allTime(token string) string {
 	return data.Data.Text
 }
 
+func createGraph(langs languages) {
+	empty := "⬜"
+	done := "🟩"
+
+	for i := 0; i < 5; i++ {
+		l := langs[i]
+		percent := math.Round(l.Percent)
+		fmt.Printf("%-20s %15s %s %5.2f %%\n", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
+	}
+}
+
 func main() {
 	var token string = os.Getenv("WAKATIME_API_KEY")
 
-	log.Println("All Time duration: " + allTime(token))
+	fmt.Println("All Time duration: " + allTime(token))
+
+	fmt.Println("-------------------------------------------------")
+
 	languages := last7Days(token)
-	for _, l := range languages {
-		fmt.Println(l.Name)
-	}
+	createGraph(languages)
 }
