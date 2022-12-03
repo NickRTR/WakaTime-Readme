@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/google/go-github/v47/github"
 	"golang.org/x/oauth2"
@@ -20,7 +21,7 @@ func authenticate(token string) *github.Client {
 	return client
 }
 
-func addGraph(client *github.Client, graph [5]string) {
+func addGraph(client *github.Client, graph string) {
 	file, _, _, err := client.Repositories.GetContents(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", nil)
 	if err != nil {
 		log.Panicln(err)
@@ -31,23 +32,19 @@ func addGraph(client *github.Client, graph [5]string) {
 		log.Panicln(err)
 	}
 
-	editedReadme := readme + "\n"
-
-	for i := 0; i < 5; i++ {
-		editedReadme += graph[i]
-	}
-
-	fmt.Println(editedReadme)
+	editedReadme := strings.Replace(readme, "<!--WakaTime-Start-->\n<!--WakaTime-End-->", fmt.Sprintf("<!--WakaTime-Start-->\n%s<!--WakaTime-End-->", graph), 1)
 
 	b := []byte(editedReadme)
-	message := "Add WakaTime Stats"
-	sha := ""
+	sha := file.GetSHA()
+	message := "Provide README with WakaTime stats"
 
 	updatedFile := github.RepositoryContentFileOptions{
 		Message: &message,
 		Content: b,
 		SHA:     &sha,
 	}
-	fmt.Println(client.Repositories.UpdateFile(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", &updatedFile))
-	//client.Git.CreateCommit(context.Background(), nil, "WakaTime-Readme", commit)
+	_, _, err = client.Repositories.UpdateFile(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", &updatedFile)
+	if err != nil {
+		log.Panicln(err)
+	}
 }
