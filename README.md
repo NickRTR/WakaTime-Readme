@@ -3,8 +3,9 @@ Go GitHub Action that adds Coding time statistics to your README
 
 ![grafik](https://user-images.githubusercontent.com/95316598/205391772-e35cd801-f01f-4447-b9c5-904d6f0c8e7d.png)
 
-<!--WakaTime-Start-->
-<!--WakaTime-End-->
+Go                     9 hrs 18 mins 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 85.49 %
+
+
 
 Go                     9 hrs 18 mins 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ 85.49 %
 
