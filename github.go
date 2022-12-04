@@ -39,7 +39,7 @@ func addGraph(client *github.Client, graph string) {
 	sectionBefore := readme[0:startIndex]
 	sectionAfter := readme[stopIndex:]
 
-	editedReadme := sectionBefore + fmt.Sprintf("<!--WakaTime-Start-->\n%s\n<!--WakaTime-End-->", graph) + sectionAfter
+	editedReadme := sectionBefore + fmt.Sprintf("<!--WakaTime-Start-->\n<pre>%s</pre>\n<!--WakaTime-End-->", graph) + sectionAfter
 
 	b := []byte(editedReadme)
 	sha := file.GetSHA()
