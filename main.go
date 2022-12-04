@@ -45,8 +45,22 @@ func allTime(token string) string {
 }
 
 func createGraph(langs languages) string {
-	empty := "⬜"
-	done := "🟩"
+	symbol := os.Getenv("SYMBOL")
+
+	var empty string
+	var done string
+
+	switch symbol {
+	case "0":
+		empty = "⬜"
+		done = "🟩"
+	case "1":
+		empty = "⬜"
+		done = "🟨"
+	default:
+		empty = "⬜"
+		done = "🟩"
+	}
 
 	var graph string
 
