@@ -62,10 +62,6 @@ func createGraph(langs languages) string {
 func main() {
 	var token string = os.Getenv("WAKATIME_API_KEY")
 
-	fmt.Println("All Time duration: " + allTime(token))
-
-	fmt.Println(strings.Repeat("-", 95))
-
 	languages := last7Days(token)
 	graph := createGraph(languages)
 

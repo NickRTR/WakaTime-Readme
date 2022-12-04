@@ -54,4 +54,6 @@ func addGraph(client *github.Client, graph string) {
 	if err != nil {
 		log.Panicln(err)
 	}
+
+	log.Println("Added Graph to README.md")
 }
