@@ -53,7 +53,7 @@ func createGraph(langs languages) string {
 	for i := 0; i < 5; i++ {
 		l := langs[i]
 		percent := math.Round(l.Percent)
-		graph += fmt.Sprintf("%-20s %15s %s %5.2f %%\n", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
+		graph += fmt.Sprintf("%-20s %15s %s %5.2f %%</br>", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
 	}
 
 	return graph

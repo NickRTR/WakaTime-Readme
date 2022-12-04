@@ -32,7 +32,14 @@ func addGraph(client *github.Client, graph string) {
 		log.Panicln(err)
 	}
 
-	editedReadme := strings.Replace(readme, "<!--WakaTime-Start-->\n<!--WakaTime-End-->", fmt.Sprintf("<!--WakaTime-Start-->\n%s<!--WakaTime-End-->", graph), 1)
+	start := "<!--WakaTime-Start-->"
+	stop := "<!--WakaTime-End-->"
+	startIndex := strings.Index(readme, start)
+	stopIndex := strings.Index(readme, stop) + len(stop)
+	sectionBefore := readme[0:startIndex]
+	sectionAfter := readme[stopIndex:]
+
+	editedReadme := sectionBefore + fmt.Sprintf("<!--WakaTime-Start-->\n%s\n<!--WakaTime-End-->", graph) + sectionAfter
 
 	b := []byte(editedReadme)
 	sha := file.GetSHA()
