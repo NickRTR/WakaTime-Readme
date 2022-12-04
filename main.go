@@ -45,12 +45,12 @@ func allTime(token string) string {
 }
 
 func createGraph(langs languages) string {
-	symbol := os.Getenv("SYMBOL")
+	theme := os.Getenv("THEME")
 
 	var empty string
 	var done string
 
-	switch symbol {
+	switch theme {
 	case "0":
 		empty = "⬜"
 		done = "🟩"
