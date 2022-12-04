@@ -43,7 +43,7 @@ func addGraph(client *github.Client, graph string) {
 
 	b := []byte(editedReadme)
 	sha := file.GetSHA()
-	message := "Provide README with WakaTime stats"
+	message := "Provide README with WakaTime statistics"
 
 	updatedFile := github.RepositoryContentFileOptions{
 		Message: &message,
