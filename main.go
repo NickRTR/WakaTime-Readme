@@ -51,15 +51,24 @@ func createGraph(langs languages) string {
 	var done string
 
 	switch theme {
-	case "0":
+	case "block-green":
 		empty = "⬜"
 		done = "🟩"
-	case "1":
+	case "block-yellow":
 		empty = "⬜"
 		done = "🟨"
-	default:
+	case "block-red":
 		empty = "⬜"
-		done = "🟩"
+		done = "🟥"
+	case "block-blue":
+		empty = "⬜"
+		done = "🟦"
+	case "default":
+		empty = "░"
+		done = "█"
+	default:
+		empty = "░"
+		done = "█"
 	}
 
 	var graph string
@@ -78,6 +87,8 @@ func main() {
 
 	languages := last7Days(token)
 	graph := createGraph(languages)
+
+	fmt.Println(graph)
 
 	var GH_TOKEN string = os.Getenv("GH_TOKEN")
 	client := authenticate(GH_TOKEN)
