@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/joho/godotenv"
 )
 
 func request(url string) string {
@@ -83,12 +85,20 @@ func createGraph(langs languages) string {
 }
 
 func main() {
+	// environment variables for local development
+	if len(os.Args) > 1 {
+		if os.Args[1] == "test" {
+			error := godotenv.Load(".env")
+			if error != nil {
+				log.Fatalln("Could not load .env file")
+			}
+		}
+	}
+
 	var token string = os.Getenv("WAKATIME_API_KEY")
 
 	languages := last7Days(token)
 	graph := createGraph(languages)
-
-	fmt.Println(graph)
 
 	var GH_TOKEN string = os.Getenv("GH_TOKEN")
 	client := authenticate(GH_TOKEN)
