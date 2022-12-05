@@ -8,7 +8,7 @@ on:
 env:
   WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
   GH_TOKEN: ${{ secrets.GH_TOKEN  }}
-  THEME: "1"
+  THEME: "default"
 
 jobs:
   build:
