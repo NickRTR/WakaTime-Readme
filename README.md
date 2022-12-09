@@ -41,7 +41,7 @@ jobs:
           go-version: 1.18
 
       - name: Go WakaTime Readme
-        uses: NickRTR/WakaTime-Readme@v0.1.0
+        uses: NickRTR/WakaTime-Readme@v0.3.0
 ```
 
 6. Wait for the action to run automatically every night or run it manually for testing purposes.

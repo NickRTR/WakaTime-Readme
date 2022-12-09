@@ -1,4 +1,4 @@
-name: Go
+name: WakaTime Readme
 
 on:
   schedule:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.18
+          go-version: 1.19
 
       - name: Go WakaTime Readme
         uses: NickRTR/WakaTime-Readme@v0.1.0
