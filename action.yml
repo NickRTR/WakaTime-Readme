@@ -4,5 +4,6 @@ description: "Go GitHub Action that adds Coding time statistics to your README"
 runs:
   using: composite
   steps:
+    - run: cd WakaTime-Readme-0.3.0
     - run: go run ./
       shell: bash
