@@ -62,9 +62,40 @@ func createGraph(langs languages) string {
 	case "block-red":
 		empty = "⬜"
 		done = "🟥"
+	case "block-purple":
+		empty = "⬜"
+		done = "🟪"
+	case "block-orange":
+		empty = "⬜"
+		done = "🟧"
 	case "block-blue":
 		empty = "⬜"
 		done = "🟦"
+	case "block-black":
+		empty = "⬜"
+		done = "⬛"
+
+	case "circle-green":
+		empty = "⚪"
+		done = "🟢"
+	case "circle-yellow":
+		empty = "⚪"
+		done = "🟡"
+	case "circle-red":
+		empty = "⚪"
+		done = "🔴"
+	case "circle-purple":
+		empty = "⚪"
+		done = "🟣"
+	case "circle-orange":
+		empty = "⚪"
+		done = "🟠"
+	case "circle-blue":
+		empty = "⚪"
+		done = "🔵"
+	case "circle-black":
+		empty = "⚪"
+		done = "⚫"
 	case "default":
 		empty = "░"
 		done = "█"
