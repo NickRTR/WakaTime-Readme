@@ -46,4 +46,7 @@ jobs:
         uses: NickRTR/WakaTime-Readme@v0.1.0
 ```
 
+6. Wait for the action to run automatically every night or run it manually for testing purposes.
+7. Let the magic happen 🚀
+
 ### Themes
