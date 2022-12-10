@@ -1,17 +1,8 @@
 name: "Go WakaTime Readme"
 description: "Go GitHub Action that adds Coding time statistics to your README"
 
-inputs:
-  GH_TOKEN:
-    description: "GitHub Token to commit to the README.md file"
-    required: true
-  WAKATIME_API_KEY:
-    description: "WakaTime API Key to fetch WakaTime data"
-    required: true
-  THEME:
-    description: "Graph theme"
-    required: false
-
 runs:
-  using: docker
-  image: Dockerfile
+  using: composite
+  steps:
+    - run: go run ./
+      shell: bash
