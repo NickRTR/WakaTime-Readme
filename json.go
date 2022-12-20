@@ -130,24 +130,3 @@ type languages []struct {
 	Text         string  `json:"text"`
 	TotalSeconds float64 `json:"total_seconds"`
 }
-
-type allTimeData struct {
-	Data struct {
-		Decimal           string `json:"decimal"`
-		Digital           string `json:"digital"`
-		IsUpToDate        bool   `json:"is_up_to_date"`
-		PercentCalculated int    `json:"percent_calculated"`
-		Range             struct {
-			End       time.Time `json:"end"`
-			EndDate   string    `json:"end_date"`
-			EndText   string    `json:"end_text"`
-			Start     time.Time `json:"start"`
-			StartDate string    `json:"start_date"`
-			StartText string    `json:"start_text"`
-			Timezone  string    `json:"timezone"`
-		} `json:"range"`
-		Text         string  `json:"text"`
-		Timeout      int     `json:"timeout"`
-		TotalSeconds float64 `json:"total_seconds"`
-	} `json:"data"`
-}

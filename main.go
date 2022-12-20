@@ -37,15 +37,6 @@ func last7Days(token string) languages {
 	return data.Data.Languages
 }
 
-func allTime(token string) string {
-	res := request(fmt.Sprintf("https://wakatime.com/api/v1/users/current/all_time_since_today?api_key=%s", token))
-
-	var data allTimeData
-	json.Unmarshal([]byte(res), &data)
-
-	return data.Data.Text
-}
-
 func createGraph(langs languages) string {
 	theme := os.Getenv("THEME")
 
