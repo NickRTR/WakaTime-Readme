@@ -14,7 +14,7 @@ Go GitHub Action that adds Coding time statistics to your README
 3. Generate a GitHub API Token with repo and user scope (https://github.com/settings/tokens)
 4. Store the WakaTime API Key and GitHub access token in your repository's action secrets as following:
    - WakaTime API Key: `WAKATIME_API_KEY=<your key>`
-   - GitHub Token: `GH_TOKEN=<your Github access token>`
+   - GitHub Token: `GH_TOKEN=<your GitHub access token>`
 5. Create a new GitHub Action in the Repository, you want the Readme stats in:
 
 ```yml
@@ -41,3 +41,27 @@ jobs:
 7. Let the magic happen 🚀
 
 ### Themes
+
+There are a number of different themes, you can choose from.
+
+| Theme  | env variable    |
+| ------ | --------------- |
+| ░█     | `default`       | 
+| ------ | --------------  |
+| ⬜🟩   | `block-green`   |
+| ⬜🟨   | `block-yellow`  |
+| ⬜🟥   | `block-red`     |
+| ⬜🟪   | `block-purple`  |
+| ⬜🟧   | `block-orange`  |
+| ⬜🟦   | `block-blue`    |
+| ⬜⬛   | `block-black`   |
+| ------ | --------------  |
+| ⚪🟢   | `circle-green`  |
+| ⬜🟡   | `circle-yellow` |
+| ⬜🔴   | `circle-red`    |
+| ⬜🟣   | `circle-purple` |
+| ⬜🟠   | `circle-orange` |
+| ⬜🔵   | `circle-blue`   |
+| ⬜⚫   | `circle-black`  |
+
+If no theme is specified, the default is selected.
