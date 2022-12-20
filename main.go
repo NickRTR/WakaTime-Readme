@@ -116,9 +116,6 @@ func createGraph(langs languages) string {
 }
 
 func main() {
-	fmt.Println(os.Environ())
-	fmt.Println(os.Args)
-
 	// environment variables for local development
 	if len(os.Args) > 1 {
 		if os.Args[1] == "test" {
@@ -134,7 +131,11 @@ func main() {
 	languages := last7Days(token)
 	graph := createGraph(languages)
 
+	target := strings.Split(os.Getenv("GITHUB_REPOSITORY"), "/")
+	user := target[0]
+	repo := target[1]
+
 	var GH_TOKEN string = os.Getenv("GH_TOKEN")
 	client := authenticate(GH_TOKEN)
-	addGraph(client, graph)
+	addGraph(client, graph, user, repo)
 }

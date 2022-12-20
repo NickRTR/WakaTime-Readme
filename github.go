@@ -21,7 +21,7 @@ func authenticate(token string) *github.Client {
 	return client
 }
 
-func addGraph(client *github.Client, graph string) {
+func addGraph(client *github.Client, graph string, user string, repo string) {
 	file, _, _, err := client.Repositories.GetContents(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", nil)
 	if err != nil {
 		log.Panicln(err)
@@ -51,7 +51,7 @@ func addGraph(client *github.Client, graph string) {
 		SHA:     &sha,
 	}
 
-	_, _, err = client.Repositories.UpdateFile(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", &updatedFile)
+	_, _, err = client.Repositories.UpdateFile(context.Background(), user, repo, "README.md", &updatedFile)
 	if err != nil {
 		log.Panicln(err)
 	}
