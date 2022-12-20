@@ -18,7 +18,7 @@ Go GitHub Action that adds Coding time statistics to your README
 5. Create a new GitHub Action in the Repository, you want the Readme stats in:
 
 ```yml
-name: Go
+name: WakaTime Readme
 
 on:
   schedule:
@@ -30,18 +30,11 @@ env:
   GH_TOKEN: ${{ secrets.GH_TOKEN  }}
 
 jobs:
-  build:
+  WakaTime-README:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.18
-
-      - name: Go WakaTime Readme
-        uses: NickRTR/WakaTime-Readme@v0.3.0
+      - uses: NickRTR/WakaTime-Readme@v0.4.2
 ```
 
 6. Wait for the action to run automatically every night or run it manually for testing purposes.
