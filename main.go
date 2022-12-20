@@ -116,6 +116,8 @@ func createGraph(langs languages) string {
 }
 
 func main() {
+	fmt.Println(os.Args)
+
 	// environment variables for local development
 	if len(os.Args) > 1 {
 		if os.Args[1] == "test" {
