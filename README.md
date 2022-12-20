@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: NickRTR/WakaTime-Readme@v0.4.2
+      - uses: NickRTR/WakaTime-Readme@v0.4.0
 ```
 
 6. Wait for the action to run automatically every night or run it manually for testing purposes.
