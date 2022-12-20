@@ -22,7 +22,7 @@ func authenticate(token string) *github.Client {
 }
 
 func addGraph(client *github.Client, graph string, user string, repo string) {
-	file, _, _, err := client.Repositories.GetContents(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", nil)
+	file, _, _, err := client.Repositories.GetContents(context.Background(), user, repo, "README.md", nil)
 	if err != nil {
 		log.Panicln(err)
 	}
