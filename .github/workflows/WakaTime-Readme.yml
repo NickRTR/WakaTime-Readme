@@ -10,10 +10,11 @@ env:
   GH_TOKEN: ${{ secrets.GH_TOKEN  }}
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - uses: ./
+  WakaTime-README:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
 
   # build:
   #   runs-on: ubuntu-latest
