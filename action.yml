@@ -2,7 +2,5 @@ name: "Go WakaTime Readme"
 description: "Go GitHub Action that adds Coding time statistics to your README"
 
 runs:
-  using: composite
-  steps:
-    - run: go run ./
-      shell: bash
+  using: docker
+  image: Dockerfile
