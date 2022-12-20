@@ -51,7 +51,7 @@ func addGraph(client *github.Client, graph string) {
 		SHA:     &sha,
 	}
 
-	_, _, err = client.Repositories.UpdateFile(context.Background(), ${{ github.event.repository.owner }}, ${{ github.event.repository.name }}, "README.md", &updatedFile)
+	_, _, err = client.Repositories.UpdateFile(context.Background(), "NickRTR", "WakaTime-Readme", "README.md", &updatedFile)
 	if err != nil {
 		log.Panicln(err)
 	}
