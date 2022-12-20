@@ -116,7 +116,7 @@ func createGraph(langs languages) string {
 }
 
 func main() {
-	environment variables for local development
+	// environment variables for local development
 	if len(os.Args) > 1 {
 		if os.Args[1] == "test" {
 			error := godotenv.Load(".env")
