@@ -28,6 +28,7 @@ on:
 env:
   WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
   GH_TOKEN: ${{ secrets.GH_TOKEN  }}
+  THEME: "default"
 
 jobs:
   WakaTime-README:
@@ -63,5 +64,7 @@ There are a number of different themes, you can choose from.
 | ⬜🟠   | `circle-orange` |
 | ⬜🔵   | `circle-blue`   |
 | ⬜⚫   | `circle-black`  |
+
+Specify a theme by adding `THEME: <theme>` to the env variables of your workflow yaml file.
 
 If no theme is specified, the default is selected.
