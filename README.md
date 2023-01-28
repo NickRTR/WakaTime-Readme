@@ -3,7 +3,7 @@
 Go GitHub Action that adds Coding time statistics to your README
 
 <!--WakaTime-Start-->
-<pre>Go                3 hrs 17 mins █████████████████░░░░░░░░ 70.64 %</br>Svelte                  22 mins ██░░░░░░░░░░░░░░░░░░░░░░░  8.08 %</br>Python                  20 mins █░░░░░░░░░░░░░░░░░░░░░░░░  7.24 %</br>Markdown                14 mins █░░░░░░░░░░░░░░░░░░░░░░░░  5.10 %</br>Other                   10 mins █░░░░░░░░░░░░░░░░░░░░░░░░  3.65 %</br></pre>
+<pre>Go                2 hrs 13 mins ███████████████░░░░░░░░░░ 61.91 %</br>Svelte                  22 mins ██░░░░░░░░░░░░░░░░░░░░░░░ 10.50 %</br>Python                  20 mins ██░░░░░░░░░░░░░░░░░░░░░░░  9.40 %</br>Markdown                14 mins █░░░░░░░░░░░░░░░░░░░░░░░░  6.62 %</br>Other                   10 mins █░░░░░░░░░░░░░░░░░░░░░░░░  4.74 %</br></pre>
 <!--WakaTime-End-->
 
 ## Documentation
