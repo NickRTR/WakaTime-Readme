@@ -3,9 +3,9 @@ package github
 import (
 	"context"
 	"fmt"
-	"log"
 	"strings"
 
+	"github.com/NickRTR/WakaTime-Readme/cli"
 	"github.com/google/go-github/v47/github"
 	"golang.org/x/oauth2"
 )
@@ -21,15 +21,15 @@ func Authenticate(token string) *github.Client {
 	return client
 }
 
-func AddStats(client *github.Client, graph string, user string, repo string) {
+func AddStats(client *github.Client, stats string, user string, repo string) {
 	file, _, _, err := client.Repositories.GetContents(context.Background(), user, repo, "README.md", nil)
 	if err != nil {
-		log.Panicln(err)
+		cli.BrintErr(err.Error())
 	}
 
 	readme, err := file.GetContent()
 	if err != nil {
-		log.Panicln(err)
+		cli.BrintErr(err.Error())
 	}
 
 	start := "<!--WakaTime-Start-->"
@@ -39,7 +39,7 @@ func AddStats(client *github.Client, graph string, user string, repo string) {
 	sectionBefore := readme[0:startIndex]
 	sectionAfter := readme[stopIndex:]
 
-	editedReadme := sectionBefore + fmt.Sprintf("<!--WakaTime-Start-->\n<pre>%s</pre>\n<!--WakaTime-End-->", graph) + sectionAfter
+	editedReadme := sectionBefore + fmt.Sprintf("<!--WakaTime-Start-->\n<pre>%s</pre>\n<!--WakaTime-End-->", stats) + sectionAfter
 
 	b := []byte(editedReadme)
 	sha := file.GetSHA()
@@ -53,8 +53,8 @@ func AddStats(client *github.Client, graph string, user string, repo string) {
 
 	_, _, err = client.Repositories.UpdateFile(context.Background(), user, repo, "README.md", &updatedFile)
 	if err != nil {
-		log.Panicln(err)
+		cli.BrintErr(err.Error())
 	}
 
-	log.Println("Added Graph to README.md")
+	cli.Brint("Added Graph to README.md")
 }

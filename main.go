@@ -10,7 +10,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func main() {
+func init() {
 	// environment variables for local development
 	if len(os.Args) > 1 {
 		if os.Args[1] == "test" {
@@ -20,20 +20,24 @@ func main() {
 			}
 		}
 	}
+}
 
+func main() {
 	var token string = os.Getenv("WAKATIME_API_KEY")
 	var GH_TOKEN string = os.Getenv("GH_TOKEN")
 	target := strings.Split(os.Getenv("GITHUB_REPOSITORY"), "/")
 	user := target[0]
 	repo := target[1]
 
+	// request stats of the last 7 days
 	languages := requests.Last7Days(token)
-	graph := github.Create7DaysGraph(languages)
+	sevenDaysStats := github.Format7DaysStats(languages)
 
+	// request all time stats
 	allTime := requests.AllTime(token)
-	allTimeMarkdown := github.CreateAllTimeData(allTime)
+	allTimeStats := github.FormatAllTimeStats(allTime)
 
-	markdown := graph + allTimeMarkdown
+	markdown := sevenDaysStats + allTimeStats
 
 	client := github.Authenticate(GH_TOKEN)
 	github.AddStats(client, markdown, user, repo)
