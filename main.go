@@ -1,112 +1,14 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io"
 	"log"
-	"math"
-	"net/http"
 	"os"
 	"strings"
 
+	"github.com/NickRTR/WakaTime-Readme/github"
+	"github.com/NickRTR/WakaTime-Readme/stats/requests"
 	"github.com/joho/godotenv"
 )
-
-func request(url string) string {
-	resp, err := http.Get(url)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	return string(body)
-}
-
-func last7Days(token string) languages {
-
-	res := request(fmt.Sprintf("https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=%s&scope=read_stats", token))
-
-	var data stats
-	json.Unmarshal([]byte(res), &data)
-
-	return data.Data.Languages
-}
-
-func createGraph(langs languages) string {
-	theme := os.Getenv("THEME")
-
-	var empty string
-	var done string
-
-	switch theme {
-	case "block-green":
-		empty = "⬜"
-		done = "🟩"
-	case "block-yellow":
-		empty = "⬜"
-		done = "🟨"
-	case "block-red":
-		empty = "⬜"
-		done = "🟥"
-	case "block-purple":
-		empty = "⬜"
-		done = "🟪"
-	case "block-orange":
-		empty = "⬜"
-		done = "🟧"
-	case "block-blue":
-		empty = "⬜"
-		done = "🟦"
-	case "block-black":
-		empty = "⬜"
-		done = "⬛"
-
-	case "circle-green":
-		empty = "⚪"
-		done = "🟢"
-	case "circle-yellow":
-		empty = "⚪"
-		done = "🟡"
-	case "circle-red":
-		empty = "⚪"
-		done = "🔴"
-	case "circle-purple":
-		empty = "⚪"
-		done = "🟣"
-	case "circle-orange":
-		empty = "⚪"
-		done = "🟠"
-	case "circle-blue":
-		empty = "⚪"
-		done = "🔵"
-	case "circle-black":
-		empty = "⚪"
-		done = "⚫"
-	case "default":
-		empty = "░"
-		done = "█"
-	default:
-		empty = "░"
-		done = "█"
-	}
-
-	var graph string
-
-	for i, l := range langs {
-		if i > 4 {
-			break
-		}
-		percent := math.Round(l.Percent)
-		graph += fmt.Sprintf("%-15s %15s %s %5.2f %%</br>", l.Name, l.Text, strings.Repeat(done, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
-	}
-
-	return graph
-}
 
 func main() {
 	// environment variables for local development
@@ -120,15 +22,19 @@ func main() {
 	}
 
 	var token string = os.Getenv("WAKATIME_API_KEY")
-
-	languages := last7Days(token)
-	graph := createGraph(languages)
-
+	var GH_TOKEN string = os.Getenv("GH_TOKEN")
 	target := strings.Split(os.Getenv("GITHUB_REPOSITORY"), "/")
 	user := target[0]
 	repo := target[1]
 
-	var GH_TOKEN string = os.Getenv("GH_TOKEN")
-	client := authenticate(GH_TOKEN)
-	addGraph(client, graph, user, repo)
+	languages := requests.Last7Days(token)
+	graph := github.Create7DaysGraph(languages)
+
+	allTime := requests.AllTime(token)
+	allTimeMarkdown := github.CreateAllTimeData(allTime)
+
+	markdown := graph + allTimeMarkdown
+
+	client := github.Authenticate(GH_TOKEN)
+	github.AddStats(client, markdown, user, repo)
 }

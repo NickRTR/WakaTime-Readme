@@ -1,4 +1,4 @@
-package main
+package github
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-func authenticate(token string) *github.Client {
+func Authenticate(token string) *github.Client {
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: token},
@@ -21,7 +21,7 @@ func authenticate(token string) *github.Client {
 	return client
 }
 
-func addGraph(client *github.Client, graph string, user string, repo string) {
+func AddStats(client *github.Client, graph string, user string, repo string) {
 	file, _, _, err := client.Repositories.GetContents(context.Background(), user, repo, "README.md", nil)
 	if err != nil {
 		log.Panicln(err)

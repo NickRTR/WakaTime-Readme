@@ -1,10 +1,10 @@
 // API Response structs
 
-package main
+package stats
 
 import "time"
 
-type stats struct {
+type SevenDaysStats struct {
 	Data struct {
 		BestDay struct {
 			CreatedAt    time.Time `json:"created_at"`
@@ -120,7 +120,28 @@ type stats struct {
 	} `json:"data"`
 }
 
-type languages []struct {
+type AllTimeStats struct {
+	Data struct {
+		Decimal           string `json:"decimal"`
+		Digital           string `json:"digital"`
+		IsUpToDate        bool   `json:"is_up_to_date"`
+		PercentCalculated int    `json:"percent_calculated"`
+		Range             struct {
+			End       time.Time `json:"end"`
+			EndDate   string    `json:"end_date"`
+			EndText   string    `json:"end_text"`
+			Start     time.Time `json:"start"`
+			StartDate string    `json:"start_date"`
+			StartText string    `json:"start_text"`
+			Timezone  string    `json:"timezone"`
+		} `json:"range"`
+		Text         string  `json:"text"`
+		Timeout      int     `json:"timeout"`
+		TotalSeconds float64 `json:"total_seconds"`
+	} `json:"data"`
+}
+
+type Languages []struct {
 	Decimal      string  `json:"decimal"`
 	Digital      string  `json:"digital"`
 	Hours        int     `json:"hours"`
