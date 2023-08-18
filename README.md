@@ -3,7 +3,7 @@
 Go GitHub Action that adds Coding time statistics to your README
 
 <!--WakaTime-Start-->
-<pre><h2>Last 7 Days</h2>Svelte            5 hrs 48 mins 🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜  49.64 %</br>TypeScript        2 hrs 38 mins 🟨🟨🟨🟨🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜  22.58 %</br>Go                 1 hr 44 mins 🟨🟨🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜  14.94 %</br>JavaScript              55 mins 🟨🟨⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   7.84 %</br>JSON                    11 mins ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   1.68 %</br><h2>All Time</h2><strong>Total Time Coded:   </strong>543 hrs 42 mins</br><strong>Timespan:           </strong>407 days</br><strong>Daily average:      </strong>1 hr(s) 19 min(s)</pre>
+<pre><h2>Last 7 Days</h2>No coding activity found for the last 7 days. ⛱️<h2>All Time</h2><strong>Total Time Coded:   </strong>640 hrs 8 mins</br><strong>Timespan:           </strong>552 days</br><strong>Daily average:      </strong>1 hr(s) 9 min(s)</pre>
 <!--WakaTime-End-->
 
 ## Documentation
