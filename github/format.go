@@ -78,12 +78,16 @@ func Format7DaysStats(langs stats.Languages) string {
 	var graph string
 	graph += "<h2>Last 7 Days</h2>"
 
-	for i, l := range langs {
-		if i > 4 {
-			break
+	if len(langs) == 0 {
+		graph += "No coding activity found for the last 7 days. ⛱️"
+	} else {
+		for i, l := range langs {
+			if i > 4 {
+				break
+			}
+			percent := math.Round(l.Percent)
+			graph += fmt.Sprintf("%-15s %15s %s %6.2f %%</br>", l.Name, l.Text, strings.Repeat(full, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
 		}
-		percent := math.Round(l.Percent)
-		graph += fmt.Sprintf("%-15s %15s %s %6.2f %%</br>", l.Name, l.Text, strings.Repeat(full, int(percent/4))+strings.Repeat(empty, int(25-int(percent/4))), l.Percent)
 	}
 
 	return graph
