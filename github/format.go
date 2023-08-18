@@ -79,7 +79,7 @@ func Format7DaysStats(langs stats.Languages) string {
 	graph += "<h2>Last 7 Days</h2>"
 
 	if len(langs) == 0 {
-		graph += "No coding activity found for the last 7 days. ⛱️"
+		graph += "No coding activity found for the last 7 days ⛱️."
 	} else {
 		for i, l := range langs {
 			if i > 4 {
